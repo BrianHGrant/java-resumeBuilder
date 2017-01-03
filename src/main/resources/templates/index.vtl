@@ -1,0 +1,66 @@
+<h1>Work Experience</h1>
+
+#if ($jobs)
+  <ul>
+    #foreach ($job in $jobs)
+      <li>$job.getTitle()</li>
+      <li>$job.getCompany()</li>
+      <li>$job.getLocation()</li>
+      <li>$job.getDescription()</li>
+      <li>$job.getStartDate()</li>
+      #if ($job.getEmployed() == true)
+        <li>Currently Employed</li>
+      #else
+        <li>$job.getEndDate()</li>
+      #end
+    #end
+  </ul>
+#else
+  <p>No Work Experience. Add a Job!</p>
+#end
+
+<div class="jumbotron">
+  <p>Add a new Job:</p>
+
+  <form action="/jobs" method="post">
+    <div class="form-group">
+      <label for="title">Job Title</label>
+      <input id="title" name="title" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="company">Company</label>
+      <input id="company" name="company" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="location">Job Location</label>
+      <input id="location" name="location" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Job Description</label>
+      <input id="description" name="description" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+      <input id="startDate" name="startDate" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="endDate">End Date</label>
+      <input id="endDate" name="endDate" type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="employed">Current Employer?</label>
+      <select id="employed" name="employed">
+        <option>true</option>
+        <option>false</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-default">Add job</button>
+  </form>
+</div>
